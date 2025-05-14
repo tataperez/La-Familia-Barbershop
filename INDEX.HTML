@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Familia Barbershop - Tradición y Estilo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Nueva paleta de colores */
+        :root {
+            --color-oscuro: #282828;     /* Fondo header/footer */
+            --color-medio: #403E3F;      /* Acentos oscuros */
+            --color-dorado: #BF9B7A;     /* Destacados, botones */
+            --color-beige: #D9C3B0;      /* Textos claros */
+            --color-gris: #3B393A;       /* Fondos secundarios */
+        }
+        
+        /* Reset y estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Rye", serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--color-oscuro);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header estilo barbería */
+        header {
+            background-color: var(--color-oscuro);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--color-dorado);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            color: var(--color-dorado);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--color-beige);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 22px;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--color-dorado);
+        }
+        
+        nav ul li::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-dorado);
+            transition: width 0.3s;
+        }
+        
+        nav ul li:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section con video de fondo */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-top: 80px;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(40, 40, 40, 0.7);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            color: white;
+            padding: 0 20px;
+        }
+        
+        .hero-content h2 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            color: var(--color-dorado);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--color-beige);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--color-dorado);
+            color: var(--color-oscuro);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(191, 155, 122, 0.4);
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+        
+        .btn:hover {
+            background-color: var(--color-beige);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(191, 155, 122, 0.6);
+        }
+        
+        /* Sección de Servicios */
+        .services {
+            padding: 100px 0;
+            background-color: var(--color-beige);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--color-oscuro);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--color-dorado);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(64, 62, 63, 0.1);
+            transition: transform 0.4s, box-shadow 0.4s;
+            border: 1px solid rgba(64, 62, 63, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(64, 62, 63, 0.2);
+        }
+        
+        .service-img {
+            height: 220px;
+            overflow: hidden;
+            
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .service-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--color-oscuro);
+            text-transform: uppercase;
+        }
+        
+        .service-info p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        .service-info .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-dorado);
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        /* Galería */
+        .gallery {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 1;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Sección de Contacto */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--color-gris);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--color-beige);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            color: var(--color-beige);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--color-dorado);
+            font-size: 20px;
+            width: 25px;
+        }
+        
+        .social-links {
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            background-color: var(--color-dorado);
+            color: var(--color-oscuro);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--color-beige);
+            color: var(--color-oscuro);
+            transform: translateY(-5px);
+        }
+        .social-links img{
+            width: 40px;
+
+        }
+        
+        .map {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 5px solid var(--color-medio);
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .contact-form {
+            background-color: var(--color-medio);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-form h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--color-beige);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-beige);
+            font-size: 16px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--color-gris);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-dorado);
+            outline: none;
+            background-color: white;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-oscuro);
+            color: var(--color-beige);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 2px solid var(--color-dorado);
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        footer a {
+            color: var(--color-dorado);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: var(--color-beige);
+        }
+        
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h2 {
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 15px 10px;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="IMG/logo.jpg" alt="Logo La Familia Barbershop">
+                <h1>La Familia Barbershop</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#barberia">La Barbería</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#reservas">Reservas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section con video -->
+    <section class="hero" id="inicio">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="video/Video de WhatsApp 2025-04-16 a las 22.45.29_919d206f.mp4" type="video/mp4">
+          
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>La Familia Barbershop</h2>
+            <p>Donde la tradición del barbero se encuentra con el estilo moderno. Más que un corte, una experiencia.</p>
+            <a href="#reservas" class="btn">Reserva tu cita</a>
+        </div>
+    </section>
+
+    <!-- Servicios - Ahora con 5 servicios -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+            </div>
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="IMG/cortecabello.jpg" alt="Corte clásico">
+                    </div>
+                    <div class="service-info">
+                        <h3>Corte de Cabello</h3>
+                        <p>Técnicas tradicionales combinadas con lo último en tendencias masculinas.</p>
+                        <span class="price">$35.000</span>
+                        <a href="#reservas" class="btn">Agendar</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="IMG/barba.jpg" alt="Afeitado tradicional">
+                    </div>
+                    <div class="service-info">
+                        <h3>Corte de Barba</h3>
+                        <p>Diseño profesional para mantener tu barba impecable.</p>
+                        <span class="price">$30.000</span>
+                        <a href="#reservas" class="btn">Agendar</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="IMG/mascarilla.jpg" alt="Arreglo de barba">
+                    </div>
+                    <div class="service-info">
+                        <h3>Mascarilla Facial</h3>
+                        <p>Dale a tu piel el cuidado que merece. ¡Agenda tu mascarilla ahora!</p>
+                        <span class="price">$25.000</span>
+                        <a href="#reservas" class="btn">Agendar</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 4 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="IMG/cejas.jpg" alt="Corte y barba">
+                    </div>
+                    <div class="service-info">
+                        <h3>Arreglo de Cejas</h3>
+                        <p>Combo completo que incluye corte de cabello y arreglo de cejas.</p>
+                        <span class="price">$50.000</span>
+                        <a href="#reservas" class="btn">Agendar</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 5 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="IMG/productos.jpg" alt="Tratamiento capilar">
+                    </div>
+                    <div class="service-info">
+                        <h3>Productos Capilares</h3>
+                        <p>Hidratación y cuidado profesional para tu cabello y barba.</p>
+                        <span class="price">$40.000</span>
+                        <a href="#reservas" class="btn">Agendar</a>
+                    </div>
+                    </div>
+
+                    <!-- Servicio 6 -->
+                 
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="IMG/cerveza.jpg" alt="Tratamiento capilar">
+                    </div>
+                    <div class="service-info">
+                        <h3>cervezas</h3>
+                        <p>Disfruta de una cervecita para celebrar tu nuevo estilo.</p>
+                        <span class="price">$5.000</span>
+                        <a href="#reservas" class="btn">Agendar</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Trabajo</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="IMG/corte1.jpeg" alt="Trabajo 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG/corte2.jpeg"Trabajo 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG/corte3.jpeg" alt="Trabajo 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG/corte4.jpeg" alt="Trabajo 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG/corte5.jpeg" alt="Trabajo 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG/corte6.jpeg" alt="Trabajo 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG/corte7.jpeg" alt="Trabajo 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG/corte8.jpeg" alt="Trabajo 8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacto</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Visítanos</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Carrera 25 aa # 56-76, Medellin-Antioquia.Colombia</p>
+                    <p><i class="fas fa-phone"></i> +57 3173036770</p>
+                    <p><i class="fas fa-envelope"></i> info@lafamiliabarbershop.com</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Sábado: 9:00 AM - 7:00 PM</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/16NGNnzQKv/?mibextid=wwXIfr" target="_blank"><img src="IMG/facebook.png" alt="Facebook"></a>
+                        <a href="https://wa.me/3173036770" target="_blank"><img src="IMG/whatsapp.png" alt="WhatsApp"></a>
+                        <a href="https://www.instagram.com/lafamiliabarbershop___?igsh=c29tcGs2YWs1a2Mz" target="_blank"><img src="IMG/Instagram.png" alt="Instagram"></a>
+                    </div>
+                    
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.144863083514!2d-75.54834142575326!3d6.244632526342719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428617ab314a3%3A0x1f9e485a341d6536!2sCra.%2025aa%20%2356-76%2C%20Medell%C3%ADn%2C%20Villa%20Hermosa%2C%20Medell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1746983872056!5m2!1ses!2sco" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envíanos un mensaje</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 <strong>La Familia Barbershop</strong>. Todos los derechos reservados.</p>
+            <p>Diseñado con pasión por el arte de la barbería clásica</p>
+        </div>
+    </footer>
+</body>
+</html>
